@@ -1,0 +1,94 @@
+# Configuration for File Parsing Program of Token Array Factory
+[MTIME]
+Interval = "120s"
+FilterTime = "360h"
+QuitTime = "360h"
+
+[DB]
+DbName = "mesdb"
+Host = "10.11.111.20"
+Port = 1521
+User = "tmsadm"
+Password = "token123"
+
+[LOG]
+InfoPath = "./log/info/log.log"
+ErrorPath = "./log/error/log.log"
+DebugPath = "./log/debug/log.log"
+Format = "-%Y%m%d.log"
+MaxSaveTime = "10000h"
+RotationTime = "24h"
+
+[BBOIT]
+DeleteTime = "72h"
+DbName = [
+    "FileProcess.db",
+    "StepInfo.db",
+]
+
+[SYNC]
+SyncPath = "D:/MyGitRepository/cxFileParse/fileParse/doc"
+# SyncPath = "/dfs/Array"
+RemotePath = "Array"
+
+[[EQP]]
+EqpName = "T1CDO01"
+MainSectionKey= ["ロットヘッダー情報", "基板ヘッダー情報"]
+SubSectionKey= ["基板名", "測定点数", "測定レシピ"]
+MountQueryCommand = [
+    "[[ -d /eqp_data/T1CDO01/Error_image ]] && mountpoint -q /eqp_data/T1CDO01/Error_image && echo \"this is a mount point\" || echo \"this is not a mount point\"",
+    "[[ -d /eqp_data/T1CDO01/EADEF/TITAN/Dir2 ]] && mountpoint -q /eqp_data/T1CDO01/EADEF/TITAN/Dir2 && echo \"this is a mount point\" || echo \"this is not a mount point\"",
+]
+UnmountCommand = [
+    "umount -f /eqp_data/T1CDO01/Error_image",
+    "umount -f /eqp_data/T1CDO01/EADEF/TITAN/Dir2",
+]
+MountCommand = [
+    "mount -t cifs //10.3.40.183/Error_image /eqp_data/T1CDO01/Error_image -o ro,vers=1.0,username=guest,password=,uid=root,gid=root,dir_mode=0777,file_mode=0777,sec=ntlm",
+    "mount -t cifs //10.3.40.183/EADEF/TITAN/Dir2 /eqp_data/T1CDO01/EADEF/TITAN/Dir2 -o ro,vers=1.0,username=guest,password=,uid=root,gid=root,dir_mode=0777,file_mode=0777,sec=ntlm",
+]
+MonitorPath = [
+    "/eqp_data/T1CDO01/Error_image",
+    "/eqp_data/T1CDO01/EADEF/TITAN/Dir2",
+]
+
+[[EQP]]
+EqpName = "T1CDO02"
+MainSectionKey= ["ロットヘッダー情報", "基板ヘッダー情報"]
+SubSectionKey= ["基板名", "測定点数", "測定レシピ"]
+MountQueryCommand = [
+    "[[ -d /eqp_data/T1CDO02/Error_image ]] && mountpoint -q /eqp_data/T1CDO02/Error_image && echo \"this is a mount point\" || echo \"this is not a mount point\"",
+    "[[ -d /eqp_data/T1CDO02/EADEF/TITAN/DIR2 ]] && mountpoint -q /eqp_data/T1CDO02/EADEF/TITAN/DIR2 && echo \"this is a mount point\" || echo \"this is not a mount point\"",
+]
+UnmountCommand = [
+    "umount -f /eqp_data/T1CDO02/Error_image",
+    "umount -f /eqp_data/T1CDO02/EADEF/TITAN/DIR2",
+]
+MountCommand = [
+    "mount -t cifs //10.3.40.185/Error_image /eqp_data/T1CDO02/Error_image -o ro,vers=1.0,username=guest,password=,uid=root,gid=root,dir_mode=0777,file_mode=0777,sec=ntlm",
+    "mount -t cifs //10.3.40.185/EADEF/TITAN/DIR2 /eqp_data/T1CDO02/EADEF/TITAN/DIR2 -o ro,vers=1.0,username=guest,password=,uid=root,gid=root,dir_mode=0777,file_mode=0777,sec=ntlm",
+]
+MonitorPath = [
+    "/eqp_data/T1CDO02/Error_image",
+    "/eqp_data/T1CDO02/EADEF/TITAN/DIR2",
+]
+
+[[EQP]]
+EqpName = "T1MAC01"
+MainSectionKey = ["TitanLotHeader", "TitanPanelHeader"]
+SubSectionKey = ["TitanPanelHeader", "DefectCount", "DefectData"]
+MountQueryCommand = ["[[ -d /eqp_data/T1MAC01/EADEF/Titan/Dir2 ]] && mountpoint -q /eqp_data/T1MAC01/EADEF/Titan/Dir2 && echo \"this is a mount point\" || echo \"this is not a mount point\""]
+UnmountCommand = ["umount -f /eqp_data/T1MAC01/EADEF/Titan/Dir2"]
+MountCommand =  ["mount -t cifs //10.3.40.184/EADEF/Titan/Dir2 /eqp_data/T1MAC01/EADEF/Titan/Dir2 -o ro,vers=1.0,username=guest,password=,uid=root,gid=root,dir_mode=0777,file_mode=0777,sec=ntlm"]
+MonitorPath =  ["/eqp_data/T1MAC01/EADEF/Titan/Dir2"]
+
+[[EQP]]
+EqpName = "T1MAC02"
+MainSectionKey = ["TitanLotHeader", "TitanPanelHeader"]
+SubSectionKey = ["TitanPanelHeader", "DefectCount", "DefectData"]
+MountQueryCommand = ["[[ -d /eqp_data/T1MAC02/EADEF/Titan/dir2 ]] && mountpoint -q /eqp_data/T1MAC02/EADEF/Titan/dir2 && echo \"this is a mount point\" || echo \"this is not a mount point\""]
+UnmountCommand = ["umount -f /eqp_data/T1MAC02/EADEF/Titan/dir2"]
+MountCommand = ["mount -t cifs //10.3.40.186/EADEF/Titan/dir2 /eqp_data/T1MAC02/EADEF/Titan/dir2 -o ro,vers=1.0,username=guest,password=,uid=root,gid=root,dir_mode=0777,file_mode=0777,sec=ntlm"]
+MonitorPath = ["/eqp_data/T1MAC02/EADEF/Titan/dir2"]
+
+

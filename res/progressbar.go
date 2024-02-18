@@ -1,0 +1,5 @@
+package logo
+
+func PrintProgressBar() {
+
+}
